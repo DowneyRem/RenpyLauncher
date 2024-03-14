@@ -4,7 +4,7 @@ chcp 65001 > nul
 REM echo 开启延迟变量
 setlocal EnableDelayedExpansion
 REM test=1 输出测试内容
-set test=0
+set test=1
 
 
 if %test%==1 echo 当前目录
@@ -65,7 +65,7 @@ goto FindPython
 cd /d %~dp0
 if %test%==1 echo.
 if %test%==1 echo 寻找 Python 脚本路径
-set PythonFile="%~f0"
+set PythonFile=%~f0
 set PythonFile=%PythonFile:.cmd=.py%
 set PythonFile=%PythonFile:.bat=.py%
 title %PythonFile:"=%
@@ -74,16 +74,17 @@ if %test%==1 echo %PythonFile:"=%
 
 if %test%==1 echo.
 if %test%==1 echo 执行脚本
-echo USE %PythonPath:"=%
-echo RUN %PythonFile:"=%
+echo USE %PythonPath%
+echo RUN %PythonFile%
 echo.
 if %test%==1 (
-	call "%PythonPath%"
+	REM call "%PythonPath%"
+	call "%PythonPath%" "%PythonFile%"
 	)^
 else (
 	call "%PythonPath%" "%PythonFile%"
 	)
-goto End
+goto exit
 
 
 :End
