@@ -30,7 +30,10 @@ def getPython(path):
 
 def getPythonFile(path):
 	files = findFile(path, ".py")
-	files.remove(__file__)
+	try:
+		files.remove(__file__)
+	except ValueError:
+		pass
 	return files[0]
 
 
