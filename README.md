@@ -12,7 +12,7 @@
 ### Todo
 - win 的 powershell 脚本
 - mac 的 python 脚本
-- llinux 的 bash 脚本
+- linux 的 bash 脚本
 
 
 
