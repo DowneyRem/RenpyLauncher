@@ -12,20 +12,23 @@
 
 |脚本名称 | 支持系统 |备注|
 |--------|---------|---------|
-|Run.bat | 理论支持所有 Win 系统 | 无法在 `Program Files` 等目录中运行 |
-|Run.py  | 支持安装 Python3 的 Win 系统 | 可在 `Program Files` 等目录中运行 |
+|Run.bat | 所有 Win 系统 | 无法在 `Program Files` 等目录中运行 |
+|Run.py  | 安装 Python3 的 Win 系统 | 可在 `Program Files` 等目录中运行 |
+
+Steam 默认下载路径：
+`C:\Program Files (x86)\Steam\steamapps\common\`
 
 
 ### 使用方法
 0. 下载相关脚本，移动至游戏程序`xxx.exe`所在目录下
 1. 复制游戏文件，至非 `Program Files` 目录下
-2. 双击脚本，运行游戏
+2. 双击脚本，开始游戏
 
 
 ### Todo
 - ~~创建桌面快捷方式~~
 - ~~修改图标~~
-- win 的 powershell 脚本
+- ~~win 的 powershell 脚本~~
 - mac 的 python 脚本
 - linux 的 bash 脚本
 

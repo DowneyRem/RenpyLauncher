@@ -58,7 +58,6 @@ if %test%==1 (
 else (
 	call "%PythonPath%" "%PythonFile%"
 	)
-REM 同时结束运行
 goto exit  
 
 
