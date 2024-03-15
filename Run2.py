@@ -18,7 +18,6 @@ def findFile(path: str, *extnames: str) -> list:
 		# print(root, dirs, files, sep="\n")
 		for file in files:
 			fullpath = os.path.join(root, file)
-			
 			if len(extnames) > 0:
 				for extname in extnames:
 					if fullpath.lower().endswith(extname):
@@ -57,23 +56,17 @@ def runOnWindows(path):
 	python_file = getPythonFile(path)
 	print(f"USE: {python_path}\nRUN: {python_file}\n")
 	
-	# os.popen(f'title "{python_file}"')
-	# os.popen(f'call "{python_path}" "{python_file}"')
-	# os.popen(f'pause & exit')  # 显示 Python 报错信息
+	result = subprocess.Popen(
+		[python_path, python_file], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	err = result.stderr.read().decode("UTF8").strip()
+	out = result.stdout.read().decode("UTF8").replace("'", "") # 替换后为空
 	
-	result = subprocess.Popen([python_path, python_file], stderr=subprocess.PIPE)
-	if result.stderr:
-		print(result.stderr.read())
+	if err:  # 输出错误信息
+		print(err)
 		time.sleep(5)
-	
-
-def runOnMacOS(path):
-	# path = os.getcwd()
-	pass
-	python_file = getPythonFile(path)
-	# print(f"USE: {python_path}\nRUN: {python_file}\n")
-	
-	subprocess.Popen(["python", python_file])
+	if not out:
+		exit(0)
+		
 
 
 def main():
