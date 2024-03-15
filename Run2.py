@@ -37,9 +37,23 @@ def desktop() -> str:
 
 
 def getPython(path):
-	files = findFile(path, ".exe")
-	di = {os.path.basename(key): key for key in files}
-	return di["python.exe"]
+	if "Windows" in platform():
+		files = findFile(path, ".exe")
+		di = {os.path.basename(key): key for key in files}
+		return di["python.exe"]
+	
+	elif "Darwin" in platform():
+		files = findFile(path, "")
+		di = {os.path.basename(key): key for key in files}
+		python_path = os.path.abspath(di["python"])
+		return python_path
+	
+	elif "Linux" in platform():
+		pass
+	else:
+		print("暂不支持当前系统")
+		time.sleep(5)
+	return None
 
 
 def getPythonFile(path):
