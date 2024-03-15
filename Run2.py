@@ -54,7 +54,7 @@ def getPython(path):
 		di = {os.path.basename(key): key for key in files}
 		return di["python.exe"]
 	
-	elif "Darwin" in platform():
+	elif "Darwin" in platform() or "macOS" in platform():
 		files = findFile(path, "")
 		di = {os.path.basename(key): key for key in files}
 		python_path = os.path.abspath(di["python"])
@@ -91,7 +91,7 @@ def runScript(path):
 		
 
 def main():
-	if "Windows" in platform() or "Darwin" in platform():
+	if "Windows" in platform() or "Darwin" in platform() or "macOS" in platform():
 		runScript(path=os.getcwd())
 	else:
 		print("暂不支持当前系统")
