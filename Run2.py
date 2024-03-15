@@ -65,7 +65,7 @@ def getPythonFile(path):
 	return files[0]
 
 
-def runOnWindows(path):
+def runScript(path):
 	python_path = getPython(path)
 	python_file = getPythonFile(path)
 	print(f"USE: {python_path}\nRUN: {python_file}\n")
@@ -80,19 +80,14 @@ def runOnWindows(path):
 		exit(0)
 		
 
-
 def main():
-	path = os.getcwd()
-	if "Windows" in platform():
-		runOnWindows(path)
-	elif "Darwin" in platform():
-		runOnMacOS(path)
-	elif "Linux" in platform():
-		pass
+	if "Windows" in platform() or "Darwin" in platform():
+		runScript(path=os.getcwd())
 	else:
 		print("暂不支持当前系统")
 		time.sleep(5)
-		
+		exit(0)
+	
 	
 if __name__ == "__main__":
 	main()
