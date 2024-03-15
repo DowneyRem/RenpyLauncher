@@ -3,8 +3,20 @@ import os
 import time
 import subprocess
 from platform import platform
+from functools import wraps
 if "Windows" in platform():
 	import winreg
+
+
+def timer(function):
+	@wraps(function)
+	def wrapper(*args, **kwargs):
+		start = time.perf_counter()
+		result = function(*args, **kwargs)
+		end = time.perf_counter()
+		print(f"{function.__module__}.{function.__name__}: {end - start}")
+		return result
+	return wrapper
 
 
 def findFile(path: str, *extnames: str) -> list:
@@ -65,6 +77,7 @@ def getPythonFile(path):
 	return files[0]
 
 
+@timer
 def runScript(path):
 	python_path = getPython(path)
 	python_file = getPythonFile(path)
