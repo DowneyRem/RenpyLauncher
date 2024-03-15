@@ -81,9 +81,9 @@ for %%i in (*.py) do (
 	set PythonFile=%~dp0%%i
 	)
 	
-	
+
 if %PythonFile%=="" (
-	echo 当前磁盘下没有 python 脚本
+	echo 当前目录下没有 python 脚本
 	goto End
 	)^
 else (
