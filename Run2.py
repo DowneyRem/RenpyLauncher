@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 import os
 import time
+import platform
 import subprocess
-from platform import platform
 from functools import wraps
-if "Windows" in platform():
+if "Windows" in platform.system():
 	import winreg
 
 
@@ -40,32 +40,28 @@ def findFile(path: str, *extnames: str) -> list:
 
 
 def desktop() -> str:
-	if "Windows" in platform():
+	if "Windows" in platform.system():
 		key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r'Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders')
 		path = winreg.QueryValueEx(key, "Desktop")[0]
-	else:  # 未测试
+	else:  # Mac & Linux
 		path = os.path.expanduser("~/Desktop")
 	return path
 
 
 def getPython(path):
-	if "Windows" in platform():
+	unix = "Darwin macOS Linux".split(" ")
+	if "Windows" in platform.system():
 		files = findFile(path, ".exe")
 		di = {os.path.basename(key): key for key in files}
 		return di["python.exe"]
 	
-	elif "Darwin" in platform() or "macOS" in platform():
+	elif platform.system() in unix:
 		files = findFile(path, "")
 		di = {os.path.basename(key): key for key in files}
 		python_path = os.path.abspath(di["python"])
 		return python_path
-	
-	elif "Linux" in platform():
-		pass
 	else:
-		print("暂不支持当前系统")
-		time.sleep(5)
-	return None
+		return None
 
 
 def getPythonFile(path):
@@ -91,10 +87,12 @@ def runScript(path):
 		
 
 def main():
-	if "Windows" in platform() or "Darwin" in platform() or "macOS" in platform():
+	system = platform.system()
+	systems = "Windows Darwin macOS Linux".split(" ")
+	if system in systems:
 		runScript(path=os.getcwd())
 	else:
-		print("暂不支持当前系统")
+		print(f"暂不支持 {system} 系统")
 		time.sleep(5)
 		exit(0)
 	
