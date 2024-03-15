@@ -70,15 +70,13 @@ def runOnWindows(path):
 	python_file = getPythonFile(path)
 	print(f"USE: {python_path}\nRUN: {python_file}\n")
 	
-	result = subprocess.Popen(
-		[python_path, python_file], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	err = result.stderr.read().decode("UTF8").strip()
-	out = result.stdout.read().decode("UTF8").replace("'", "") # 替换后为空
-	
-	if err:  # 输出错误信息
-		print(err)
+	result = subprocess.run(
+		[python_path, python_file], encoding="UTF8", shell=True,
+		stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	if result.stderr:  # 输出错误信息
+		print(result.stderr)
 		time.sleep(5)
-	if not out:
+	if not result.stdout:
 		exit(0)
 		
 
