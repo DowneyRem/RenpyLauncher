@@ -84,13 +84,10 @@ def runScript(path):
 	print(f"USE: {python_path}\nRUN: {python_file}\n")
 	
 	result = subprocess.run(
-		[python_path, python_file], encoding="UTF8", shell=True,
-		stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+		[python_path, python_file], encoding="UTF8", stderr=subprocess.PIPE)
 	if result.stderr:  # 输出错误信息
 		print(result.stderr)
 		time.sleep(5)
-	if not result.stdout:
-		exit(0)
 		
 
 def main():
