@@ -21,14 +21,14 @@
 ### 使用方法
 #### Win 平台
 Steam 下载路径：
-` C:\Program Files (x86)\Steam\steamapps\common\ `
+` C:\Program Files (x86)\Steam\steamapps\common\ `  
 0. 下载相关脚本，移动至游戏程序`xxx.exe`所在目录下
 1. 复制游戏文件，至非 `Program Files` 目录下
 2. 双击执行脚本，开始游戏  
 
 
 #### Mac 平台
-Steam 下载路径：`~/Library/Application Support/Steam/steamapps/common/ `
+Steam 下载路径：`~/Library/Application Support/Steam/steamapps/common/ `  
 0. 下载相关脚本，移动至游戏程序`xxx.py`所在目录下
 1. 在游戏所在目录打开终端
 2. 执行脚本`python3 Run.py`，开始游戏
