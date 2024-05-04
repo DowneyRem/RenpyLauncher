@@ -49,19 +49,13 @@ def desktop() -> str:
 
 
 def getPython(path):
-	unix = "Darwin macOS Linux".split(" ")
+	extname = "" # 类 unix: Darwin macOS Linux 默认无后缀名
 	if "Windows" in platform.system():
-		files = findFile(path, ".exe")
-		di = {os.path.basename(key): key for key in files}
-		return di["python.exe"]
-	
-	elif platform.system() in unix:
-		files = findFile(path, "")
-		di = {os.path.basename(key): key for key in files}
-		python_path = os.path.abspath(di["python"])
-		return python_path
-	else:
-		return None
+		extname = ".exe"
+	files = findFile(path, extname)
+	di = {os.path.basename(key): key for key in files}
+	python_path = os.path.abspath(di[f"python{extname}"])
+	return python_path
 
 
 def getPythonFile(path):

@@ -8,7 +8,7 @@
 ### 支持平台
 - ✅ Windows
 - ✅ Mac
-- ⭕️ ~~Linux~~
+- ❓ Linux
 
 
 |   脚本  |   支持系统 |  备注  |
@@ -40,7 +40,7 @@ Steam 下载路径：`~/Library/Application Support/Steam/steamapps/common/ `
 - ✅ Win 的 batch 脚本
 - ✅ Win 的 python 脚本
 - ✅ Mac 的 python 脚本
-- ~~win 的 powershell 脚本~~
+- ~~Win 的 powershell 脚本~~
 - ~~创建桌面快捷方式~~
 - ~~修改图标~~
 - linux 的 bash 脚本
