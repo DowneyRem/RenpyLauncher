@@ -37,14 +37,18 @@ Steam 下载路径：`~/Library/Application Support/Steam/steamapps/common/ `
 
 
 ### Todo
-- ✅ Win 的 batch 脚本
-- ✅ Win 的 python 脚本
-- ✅ Mac 的 python 脚本
 - ~~Win 的 powershell 脚本~~
 - ~~创建桌面快捷方式~~
 - ~~修改图标~~
 - linux 的 bash 脚本
 
+<details>
+<summary> 已完成  </summary>
+
+- ✅ Win 的 batch 脚本
+- ✅ Win 的 python 脚本
+- ✅ Mac 的 python 脚本
+</details>
 
 ## 原始功能 & [原始脚本](./Origin/Run.bat)
 使用  embedding python 给没有 Python 环境的人，执行 python 脚本
